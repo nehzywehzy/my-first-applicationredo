@@ -5,16 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employer extends Model
+class Tag extends Model
 
 {
     use HasFactory;
 
-    /**
-     * An Employer can have many Job listings.
-     */
     public function jobs()
+
     {
-        return $this->hasMany(\App\Models\Job::class);
+
+    return $this->belongsToMany(Job::class, relatedPivotKey:"job_listing_id");
+
     }
+
+
 }
+
+
+    
+
+
+
+

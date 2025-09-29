@@ -10,30 +10,27 @@
   <!-- Sidebar -->
   <aside class="w-64 bg-white shadow-lg hidden md:flex flex-col">
     <div class="p-6 text-2xl font-bold border-b">My Dashboard</div>
-    <nav class="flex-1 p-4 space-y-2">
-      <div class="hidden md:block">
-        <div class="ml-10 flex items-baseline space-x-4">
-          <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-          <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
-        </div>
-      </div>
-    </nav>
   </aside>
 
   <!-- Main Content -->
   <div class="flex-1 flex flex-col">
     <!-- Navbar -->
     <header class="h-16 bg-white shadow flex items-center justify-between px-6">
-      <button class="md:hidden p-2 rounded bg-gray-200">☰</button>
-      <h1 class="text-xl font-semibold">{{ $heading }}</h1>
-      <div class="flex items-center space-x-4">
-        <span class="text-gray-600">Hello User</span>
-        <img src="https://via.placeholder.com/32" class="w-8 h-8 rounded-full" />
-      </div>
+      <!-- Left: Title -->
+      <h1 class="text-xl font-semibold">Job Listings</h1>
+
+      <!-- Right: Navigation -->
+      <nav class="flex items-center space-x-6">
+        <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
+        <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
+        <x-nav-link href="/contacts" :active="request()->is('contacts')">Contacts</x-nav-link>
+      </nav>
     </header>
 
     <!-- Content Area -->
-    {{ $slot }}
+    <main class="p-6">
+      {{ $slot }}
+    </main>
   </div>
 </body>
 </html>
