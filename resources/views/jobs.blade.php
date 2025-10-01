@@ -6,7 +6,7 @@
     <ul class="space-y-4">
         @foreach ($jobs as $job)
             <li class="border border-gray-200 rounded-lg">
-                <a href="/jobs/{{ $job['id'] }}" class="block px-4 py-6">
+                <a href="/jobs/{{ $job->id }}" class="block px-4 py-6">
                     <!-- Employer -->
                     <div class="font-bold text-blue-500 text-sm">
                         {{ $job->employer->name }}
@@ -14,8 +14,8 @@
 
                     <!-- Job Title & Salary -->
                     <div>
-                        <strong class="text-laracasts">{{ $job['title'] }}:</strong>
-                        Pays {{ $job['salary'] }} per year.
+                        <strong class="text-laracasts">{{ $job->title }}:</strong>
+                        Pays {{ $job->salary }} per year.
                     </div>
                 </a>
 
@@ -30,4 +30,9 @@
             </li>
         @endforeach
     </ul>
+
+    <!-- Pagination Links -->
+    <div class="mt-6">
+        {{ $jobs->links() }}
+    </div>
 </x-layout>

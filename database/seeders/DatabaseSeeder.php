@@ -3,19 +3,21 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Tag;
+use App\Models\Job;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // Create 10 tags
-        $tags = \App\Models\Tag::factory(10)->create();
+        // Create or fetch 10 unique tags
+        $tags = collect();
+        foreach (Tag::factory(10)->make() as $tag) {
+            $tags->push(Tag::firstOrCreate(['name' => $tag->name]));
+        }
 
         // Create 20 jobs and attach 2 random tags to each job
-        \App\Models\Job::factory(20)->create()->each(function ($job) use ($tags) {
+        Job::factory(20)->create()->each(function ($job) use ($tags) {
             $job->tags()->attach($tags->random(2));
         });
     }
