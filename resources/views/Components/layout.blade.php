@@ -24,6 +24,12 @@
         <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
         <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
         <x-nav-link href="/contacts" :active="request()->is('contacts')">Contacts</x-nav-link>
+
+        <!-- Create Job Button -->
+        <a href="/jobs/create"
+           class="ml-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow">
+          + Create Job
+        </a>
       </nav>
     </header>
 
@@ -33,4 +39,7 @@
     </main>
   </div>
 </body>
+    @include('sweetalert2::index')
 </html>
+
+

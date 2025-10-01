@@ -11,9 +11,19 @@ class Job extends Model
 
     protected $table = 'job_listings';
 
+    protected $guarded = [];
+
     /**
      * A Job belongs to an Employer.
+     * 
      */
+    public function show(Job $job)
+{
+    return view('jobs.show', [
+        'job' => $job
+    ]);
+}
+
     public function employer()
     {
         return $this->belongsTo(\App\Models\Employer::class);
